@@ -36,6 +36,17 @@ class Controller {
     ));
   }
 
+  $dbParams = array(
+      'driver'   => 'pdo_mysql',
+      'user'     => "root",
+      'password' => "3A30d0_3919&Ceé748E%",
+      'dbname'   => "blog-forteroche",
+      'charset'  => 'utf8',
+  );
+  $config = Setup::createAnnotationMetadataConfiguration([__DIR__."/../src/Entity"], false, __DIR__."/../web/cache");
+  $config->setAutoGenerateProxyClasses(true);
+  $this->doctrine = EntityManager::create($dbParams, $config);
+
   /**
    * @param $filename
    * @param $data
