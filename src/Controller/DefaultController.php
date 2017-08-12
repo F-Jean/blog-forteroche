@@ -9,8 +9,8 @@ namespace Controller;
 
 use Framework\Controller;
 
-class DefaultController {
+class DefaultController extends Controller {
   public function indexAction() {
-    return $this->render();
+    return $this->render("index.html.twig", ["prenom" => "jean"]);
   }
 }
