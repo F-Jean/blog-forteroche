@@ -26,6 +26,11 @@ class Controller {
   private $twig;
 
   /**
+   * @var EntityManager
+   */
+  private $doctrine;
+
+  /**
    * Controller constructor.
    */
   public function __construct() {
@@ -44,6 +49,13 @@ class Controller {
     $config = Setup::createAnnotationMetadataConfiguration([__DIR__."/../src/Entity"], false, __DIR__."/../web/cache");
     $config->setAutoGenerateProxyClasses(true);
     $this->doctrine = EntityManager::create($dbParams, $config);
+  }
+
+  /**
+   * @return EntityManager
+   */
+  protected function getDoctrine() {
+    return $this->doctrine;
   }
 
   /**
