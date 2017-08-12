@@ -13,5 +13,11 @@
         "symfony/debug": "^3.3",
         "twig/twig": "^2.4",
         "doctrine/orm": "^2.5"
+    },
+    "autoload": {
+      "psr-4": {
+        "": "src/",
+        "Framework\\": "app/"
+      }
     }
 }
