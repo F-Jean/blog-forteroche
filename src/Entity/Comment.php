@@ -43,30 +43,30 @@ class Comment {
   /**
    * @var int
    *
-   * @Column(name="comment_id", type="int")
+   * @Column(name="chapter_id", type="integer")
    */
-  private $comment_Id;
+  private $chapter_Id;
 
   /**
    * @var int
    *
-   * @Column(name="parent_id_field", type="int")
+   * @Column(name="parent_id", type="integer")
    */
-  private $parent_Id_Field;
+  private $parent_Id;
 
   /**
    * @var int
    *
-   * @Column(name="level_field", type="int")
+   * @Column(name="lvl", type="integer")
    */
-  private $level_Field;
+  private $lvl;
 
   /**
    * @var int
    *
-   * @Column(name="report_comment", type="int")
+   * @Column(name="report_com", type="integer")
    */
-  private $report_Comment;
+  private $report_Com;
 
   /**
    * @return int
@@ -127,56 +127,56 @@ public function setAdd_At($add_At) {
   /**
    * @return int
    */
-  public function getComment_Id() {
-    return $this->comment_Id;
+  public function getChapter_Id() {
+    return $this->chapter_Id;
   }
 
   /**
-   * @param int $comment_id
+   * @param int $chapter_id
    */
-  public function setComment_Id($comment_Id) {
-    $this->comment_Id = $comment_Id;
-  }
-
-  /**
-   * @return int
-   */
-  public function getParent_Id_Field() {
-    return $this->parent_Id_Field;
-  }
-
-  /**
-   * @param int $parent_id_field
-   */
-  public function setParent_Id_Field($parent_Id_Field) {
-    $this->parent_Id_Field = $parent_Id_Field;
+  public function setChapter_Id($chapter_Id) {
+    $this->chapter_Id = $chapter_Id;
   }
 
   /**
    * @return int
    */
-  public function getLevel_Field() {
-    return $this->level_Field;
+  public function getParent_Id() {
+    return $this->parent_Id;
   }
 
   /**
-   * @param int $level_field
+   * @param int $parent_id
    */
-  public function setLevel_Field($level_Field) {
-    $this->level_Field = $level_Field;
+  public function setParent_Id($parent_Id) {
+    $this->parent_Id = $parent_Id;
   }
 
   /**
    * @return int
    */
-  public function getReport_Comment() {
-    return $this->report_Comment;
+  public function getLvl() {
+    return $this->lvl;
   }
 
   /**
-   * @param int $report_comment
+   * @param int $lvl
    */
-  public function setReport_Comment($report_Comment) {
-    $this->report_Comment = $report_Comment;
+  public function setLvl($lvl) {
+    $this->lvl = $lvl;
+  }
+
+  /**
+   * @return int
+   */
+  public function getReport_Com() {
+    return $this->report_Com;
+  }
+
+  /**
+   * @param int $report_com
+   */
+  public function setReport_Com($report_Com) {
+    $this->report_Com = $report_Com;
   }
 }
