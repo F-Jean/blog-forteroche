@@ -1,9 +1,4 @@
 <?php
-/**
- * Created by
- * User: jean
- * Date: 12/08/17
- */
 
  namespace Framework;
 
@@ -31,8 +26,53 @@
        $request = Request::createFromGlobals();
        $requestStack = new RequestStack();
        $routes = new RouteCollection();
-       $routes->add("index", new Route("/", [
+       /**
+        * homepage route
+        */
+       $routes->add("homepage", new Route("/", [
          "_controller" => "Controller\DefaultController::indexAction"
+       ]));
+
+       /**
+        * routes that handles ChapterController
+        */
+       $routes->add("chapter_display", new Route("/chapter/display", [
+           "_controller" => "Controller\ChapterController::listAction"
+       ]));
+       $routes->add("chapter_add", new Route("/chapter/add", [
+           "_controller" => "Controller\ChapterController::addAction"
+       ]));
+       $routes->add("chapter_update", new Route("/chapter/update/{id}", [
+           "_controller" => "Controller\ChapterController::updateAction"
+       ]));
+       $routes->add("chapter_delete", new Route("/chapter/delete/{id}", [
+           "_controller" => "Controller\ChapterController::deleteAction"
+       ]));
+
+       /**
+        * routes that handles CommentController
+        */
+       $routes->add("comment_display", new Route("/comment/display", [
+           "_controller" => "Controller\CommentController::listAction"
+       ]));
+       $routes->add("comment_add", new Route("/comment/add", [
+           "_controller" => "Controller\CommentController::addAction"
+       ]));
+       $routes->add("comment_update", new Route("/comment/update/{id}", [
+           "_controller" => "Controller\CommentController::updateAction"
+       ]));
+       $routes->add("comment_delete", new Route("/comment/delete/{id}", [
+           "_controller" => "Controller\CommentController::deleteAction"
+       ]));
+
+       /**
+        * routes that handles AdminController
+        */
+       $routes->add("user_register", new Route("/user/register", [
+           "_controller" => "Controller\UserController::registerAction"
+       ]));
+       $routes->add("user_delete", new Route("/user/delete/{id}", [
+           "_controller" => "Controller\UserController::deleteAction"
        ]));
        $context = new RequestContext();
        $matcher = new UrlMatcher($routes, $context);

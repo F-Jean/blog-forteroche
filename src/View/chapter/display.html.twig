@@ -1,0 +1,35 @@
+{% extends 'templates/base.html.twig' %}
+
+{% block title %}{{ parent() }} - Gestion des chapitres{% endblock %}
+
+{% block chaptercontent %}
+  <!-- Chapter Grid Section -->
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <h1>Gestion des chapitres</h1>
+      <p>Ajouter, modifier ou supprimer des chapitres.</p>
+      <p><a class="btn btn-primary btn-lg" href="/chapter/add" role="button">Ajouter un nouveau chapitre.</p>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Titre</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for chapter in chapters %}
+          <tr>
+              <td>{{ chapter.id }}</td>
+              <td>{{ chapter.title }}</td>
+              <td>
+                  <a class="btn btn-primary" href="/chapter/update/{{ chapter.id }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                  <a class="btn btn-primary" href="/chapter/delete/{{ chapter.id }}"><span class="glyphicon glyphicon-remove"></span></a>
+              </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

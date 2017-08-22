@@ -41,13 +41,6 @@ class Chapter {
   private $add_At;
 
   /**
-   * @var int
-   *
-   * @Column(name="chapter_num", type="int")
-   */
-  private $chapter_Num;
-
-  /**
    * @return int
    */
   public function getId() {
@@ -101,17 +94,5 @@ class Chapter {
    */
   public function setAdd_At($add_At) {
     $this->add_At = $add_At;
-
-    /**
-     * @return int
-     */
-    public function getChapter_Num() {
-      return $this->chapter_Num;
-    }
-
-    /**
-     * @param int $chapter_Num
-     */
-    public function setChapter_Num($chapter_Num) {
-      $this->chapter_Num = $chapter_Num;
-    }
+  }
+}

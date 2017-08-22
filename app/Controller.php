@@ -1,9 +1,4 @@
 <?php
-/**
- * Created by
- * User: jean
- * Date: 12/08/17
- */
 
 namespace Framework;
 
@@ -38,6 +33,7 @@ class Controller {
     $this->twig = new \Twig_Environment($loader, array(
       'cache' => false,
     ));
+
 
     $dbParams = array(
         'driver'   => 'pdo_mysql',
