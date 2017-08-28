@@ -38,21 +38,23 @@ class Comment {
    *
    * @Column(name="add_at", type="date")
    */
-  private $add_At;
+  private $addAt;
 
   /**
    * @var int
    *
-   * @Column(name="chapter_id", type="integer")
+   * @ManyToOne(targetEntity="Chapter")
+   * @JoinColumn(name="chapter_id", referencedColumnName="id")
    */
-  private $chapter_Id;
+  private $chapter;
 
   /**
    * @var int
    *
-   * @Column(name="parent_id", type="integer")
+   * @ManyToOne(targetEntity="Comment")
+   * @JoinColumn(name="parent_id", referencedColumnName="id")
    */
-  private $parent_Id;
+  private $parent;
 
   /**
    * @var int
@@ -66,7 +68,7 @@ class Comment {
    *
    * @Column(name="report_com", type="integer")
    */
-  private $report_Com;
+  private $reportCom;
 
   /**
    * @return int
@@ -114,42 +116,42 @@ class Comment {
 /**
  * @return date
  */
-public function getAdd_At() {
-  return $this->add_At;
+public function getAddAt() {
+  return $this->addAt;
 }
 
 /**
  * @param date $add_At
  */
-public function setAdd_At($add_At) {
-  $this->add_At = $add_At;
+public function setAddAt($addAt) {
+  $this->addAt = $addAt;
 
   /**
    * @return int
    */
-  public function getChapter_Id() {
-    return $this->chapter_Id;
+  public function getChapter() {
+    return $this->chapter;
   }
 
   /**
    * @param int $chapter_id
    */
-  public function setChapter_Id($chapter_Id) {
-    $this->chapter_Id = $chapter_Id;
+  public function setChapter($chapter) {
+    $this->chapter = $chapter;
   }
 
   /**
    * @return int
    */
-  public function getParent_Id() {
-    return $this->parent_Id;
+  public function getParent() {
+    return $this->parent;
   }
 
   /**
    * @param int $parent_id
    */
-  public function setParent_Id($parent_Id) {
-    $this->parent_Id = $parent_Id;
+  public function setParent($parent) {
+    $this->parent = $parent;
   }
 
   /**
@@ -169,14 +171,14 @@ public function setAdd_At($add_At) {
   /**
    * @return int
    */
-  public function getReport_Com() {
-    return $this->report_Com;
+  public function getReportCom() {
+    return $this->reportCom;
   }
 
   /**
    * @param int $report_com
    */
-  public function setReport_Com($report_Com) {
-    $this->report_Com = $report_Com;
+  public function setReportCom($reportCom) {
+    $this->reportCom = $reportCom;
   }
 }
