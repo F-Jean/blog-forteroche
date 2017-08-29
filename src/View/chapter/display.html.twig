@@ -1,30 +1,34 @@
 {% extends 'templates/layout.html.twig' %}
 
-{% block chaptercontent %}
-<!-- Chapter Grid Section -->
-  <section id="chapter" class="bg-light-gray">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-12 text-center">
-                  <h2 class="section-heading">Chapitres</h2>
-                  <h3 class="section-subheading text-muted">Section des chapitres précédents.</h3>
-              </div>
-          </div>
-          <div class="row">
-            {% for chapter in chapters %}
-              <div class="col-md-4 col-sm-6 portfolio-item">
-                  <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                      <div class="portfolio-hover">
-                          <div class="portfolio-hover-content">
-                              <i class="fa fa-plus fa-3x"></i>
-                          </div>
-                      </div>
-                      <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">
-                  </a>
-                  <div class="portfolio-caption">
-                      <h4>{{ chapter.title }}</h4>
-                  </div>
-              </div>
-            {% endfor %}
-  </section>
+{% block title %}{{ parent() }} - Gestion des chapitres{% endblock %}
+
+{% block container %}
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <h1>Gestion des chapitres</h1>
+            <p>Ajoute, modifie ou supprime des chapitres.</p>
+            <p><a class="btn btn-primary btn-lg" href="/chapter/add" role="button">Ajouter un nouveau chapitre</a></p>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for chapter in chapters %}
+                    <tr>
+                        <td>{{ chapter.id }}</td>
+                        <td>{{ chapter.title }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="/chapter/update/{{ chapter.id }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a class="btn btn-primary" href="/chapter/delete/{{ chapter.id }}"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

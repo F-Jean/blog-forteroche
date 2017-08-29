@@ -18,7 +18,7 @@ class ChapterController extends Controller {
   public function addAction(Request $request) {
     if($request->getMethod()=='POST') {
       $chapter = new Chapter();
-      $chapter->setName($request->request->get("name"));
+      $chapter->setTitle($request->request->get("name"));
       $this->getDoctrine()->persist($chapter);
       $this->getDoctrine()->flush();
       header("location: http://blog-forteroche.dev/chapter/display");
@@ -27,12 +27,12 @@ class ChapterController extends Controller {
     return $this->render("chapter/add.html.twig");
   }
 
-  public function updateAction(Requets $request, $id) {
-    $chapter = $this->getDoctrine->getRepository("Entity\Chapter")->find($id);
+  public function updateAction(Request $request, $id) {
+    $chapter = $this->getDoctrine()->getRepository("Entity\Chapter")->find($id);
     if($request->getMethod()=="POST") {
-      $chapter->setName($request->request->get("name"));
+      $chapter->setTitle($request->request->get("name"));
       $this->getDoctrine()->flush();
-      header("location: http://blog-forteroche/chapter/display");
+      header("location: http://blog-forteroche.dev/chapter/display");
       die;
     }
     return $this->render("chapter/update.html.twig", ["chapter"=>$chapter]);
@@ -42,7 +42,7 @@ class ChapterController extends Controller {
     $chapter = $this->getDoctrine()->getRepository("Entity\Chapter")->find($id);
     $this->getDoctrine()->remove($chapter);
     $this->getDoctrine()->flush();
-    header("location: http://blog-forteroche/chapter/display");
+    header("location: http://blog-forteroche.dev/chapter/display");
     die;
   }
 }

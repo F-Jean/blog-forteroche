@@ -32,7 +32,7 @@ class CommentController extends Controller {
     if($request->getMethod()=="POST") {
       $comment->setName($request->request->get("name"));
       $this->getDoctrine()->flush();
-      header("location: http://blog-forteroche/comment/display");
+      header("location: http://blog-forteroche.dev/comment/display");
       die;
     }
     return $this->render("comment/update.html.twig", ["comment"=>$comment]);
@@ -42,7 +42,7 @@ class CommentController extends Controller {
     $comment = $this->getDoctrine()->getRepository("Entity\Comment")->find($id);
     $this->getDoctrine()->remove($comment);
     $this->getDoctrine()->flush();
-    header("location: http://blog-forteroche/comment/display");
+    header("location: http://blog-forteroche.dev/comment/display");
     die;
   }
 }

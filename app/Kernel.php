@@ -34,7 +34,7 @@
        ]));
 
        /**
-        * routes that handles ChapterController
+        * routes that handle ChapterController
         */
        $routes->add("chapter_display", new Route("/chapter/display", [
            "_controller" => "Controller\ChapterController::listAction"
@@ -50,7 +50,7 @@
        ]));
 
        /**
-        * routes that handles CommentController
+        * routes that handle CommentController
         */
        $routes->add("comment_display", new Route("/comment/display", [
            "_controller" => "Controller\CommentController::listAction"
@@ -66,13 +66,16 @@
        ]));
 
        /**
-        * routes that handles AdminController
+        * routes that handle AdminController
         */
-       $routes->add("user_register", new Route("/user/register", [
-           "_controller" => "Controller\UserController::registerAction"
-       ]));
-       $routes->add("user_delete", new Route("/user/delete/{id}", [
-           "_controller" => "Controller\UserController::deleteAction"
+        $routes->add("admin_login", new Route("/admin/login", [
+            "_controller" => "Controller\AdminController::loginAction"
+        ]));
+        $routes->add("admin_logout", new Route("/admin/logout", [
+            "_controller" => "Controller\AdminController::logoutAction"
+        ]));
+       $routes->add("admin_delete", new Route("/admin/delete/{id}", [
+           "_controller" => "Controller\AdminController::deleteAction"
        ]));
        $context = new RequestContext();
        $matcher = new UrlMatcher($routes, $context);

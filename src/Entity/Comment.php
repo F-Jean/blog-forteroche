@@ -22,7 +22,7 @@ class Comment {
   /**
    * @var string
    *
-   * @Column(name="pseudo", type="string", lenght="255")
+   * @Column(name="pseudo", type="string")
    */
   private $pseudo;
 
@@ -111,7 +111,6 @@ class Comment {
   public function setContent($content) {
     $this->content = $content;
   }
-}
 
 /**
  * @return date
@@ -125,60 +124,61 @@ public function getAddAt() {
  */
 public function setAddAt($addAt) {
   $this->addAt = $addAt;
+}
 
-  /**
-   * @return int
-   */
-  public function getChapter() {
-    return $this->chapter;
-  }
+/**
+ * @return int
+ */
+public function getChapter() {
+  return $this->chapter;
+}
 
-  /**
-   * @param int $chapter_id
-   */
-  public function setChapter($chapter) {
-    $this->chapter = $chapter;
-  }
+/**
+ * @param int $chapter_id
+ */
+public function setChapter($chapter) {
+  $this->chapter = $chapter;
+}
 
-  /**
-   * @return int
-   */
-  public function getParent() {
-    return $this->parent;
-  }
+/**
+ * @return int
+ */
+public function getParent() {
+  return $this->parent;
+}
 
-  /**
-   * @param int $parent_id
-   */
-  public function setParent($parent) {
-    $this->parent = $parent;
-  }
+/**
+ * @param int $parent_id
+ */
+public function setParent($parent) {
+  $this->parent = $parent;
+}
 
-  /**
-   * @return int
-   */
-  public function getLvl() {
-    return $this->lvl;
-  }
+/**
+ * @return int
+ */
+public function getLvl() {
+  return $this->lvl;
+}
 
-  /**
-   * @param int $lvl
-   */
-  public function setLvl($lvl) {
-    $this->lvl = $lvl;
-  }
+/**
+ * @param int $lvl
+ */
+public function setLvl($lvl) {
+  $this->lvl = $lvl;
+}
 
-  /**
-   * @return int
-   */
-  public function getReportCom() {
-    return $this->reportCom;
-  }
+/**
+ * @return int
+ */
+public function getReportCom() {
+  return $this->reportCom;
+}
 
-  /**
-   * @param int $report_com
-   */
-  public function setReportCom($reportCom) {
-    $this->reportCom = $reportCom;
-  }
+/**
+ * @param int $report_com
+ */
+public function setReportCom($reportCom) {
+  $this->reportCom = $reportCom;
+}
 }

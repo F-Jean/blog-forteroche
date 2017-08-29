@@ -13,30 +13,15 @@
 </head>
 
 <body id="page-top" class="index">
-{% block body %}
-  <!-- Last chapter Section -->
-  {% block lastchaptercontent %}{% endblock %}
+{% block body %}{% endblock %}
 
-  <!-- Portfolio Grid Section -->
-  {% block chaptercontent %}{% endblock %}
+<!-- jQuery -->
+{% block jquery %}{% endblock %}
 
-  <!-- About Section -->
-  {% block about %}{% endblock %}
-
-  <!-- Contact Section -->
-  {% block contact %}{% endblock %}
-
-  <!--Footer Section -->
-  {% block footer %}{% endblock %}
-
-  <!-- jQuery -->
-  {% block jquery %}{% endblock %}
-
-  <!-- Bootstrap Core JavaScript -->
-  <!-- Plugin JavaScript -->
-  <!-- Contact Form JavaScript -->
-  <!-- Theme JavaScript -->
-  {% block javascript %}{% endblock %}
-{% endblock %}
+<!-- Bootstrap Core JavaScript
+     Plugin JavaScript
+     Contact Form JavaScript
+     Theme JavaScript -->
+{% block javascript %}{% endblock %}
 </body>
 </html>
