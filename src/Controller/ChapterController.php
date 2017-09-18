@@ -23,8 +23,7 @@ class ChapterController extends Controller {
       $chapter->setAddAt(new \DateTime());
       $this->getDoctrine()->persist($chapter);
       $this->getDoctrine()->flush();
-      header("location: http://blog-forteroche.dev/chapter/display");
-      die;
+      return $this->redirect("chapter_display");
     }
     return $this->render("chapter/add.html.twig");
   }
@@ -35,8 +34,7 @@ class ChapterController extends Controller {
       $chapter->setTitle($request->request->get("title"));
       $chapter->setContent($request->request->get("content"));
       $this->getDoctrine()->flush();
-      header("location: http://blog-forteroche.dev/chapter/display");
-      die;
+      return $this->redirect("chapter_display");
     }
     return $this->render("chapter/update.html.twig", ["chapter"=>$chapter]);
   }
@@ -45,6 +43,6 @@ class ChapterController extends Controller {
     $chapter = $this->getDoctrine()->getRepository("Entity\Chapter")->find($id);
     $this->getDoctrine()->remove($chapter);
     $this->getDoctrine()->flush();
-    return $this->redirect("chapter/display");
+    return $this->redirect("chapter_display");
   }
 }
