@@ -1,5 +1,7 @@
 # Blog Jean Forteroche "Billet simple pour l'Alaska".
 
+# FR
+
 Il souhaite publier son roman par épisode en ligne sur son propore site.
 
 Développer une application de blog simple en PHP avec une base de données MySQL.
@@ -10,6 +12,8 @@ Les lecteurs doivent pouvoir "signaler" les commentaires pour que ceux-ci remont
 
 L'interface d'administration sera protégée par mot de passe. La rédaction de billets se fera dans une interface WYSIWYG basée sur TinyMCE, pour que Jean n'ait pas besoin de rédiger son histoire en HTML (on comprend qu'il n'ait pas très envie !).
 
+# EN
+
 He wants to publish his novel online by episode on his own website.
 
 Develop a simple blog application in PHP with a MySQL database.
@@ -19,6 +23,8 @@ Each ticket must allow the addition of a comment, that could be moderate in an a
 Readers could be able to "report" the comments so them appears in the admin interface to be moderate.
 
 The admin interface will be protect by a password. The tickets' redaction will be in a WYSIWYG interface based on TinyMCE, so the author has not the need to write his story in HTML.
+
+# INFOS
 
 # Infos about "creation of redirect function for routes + repo config in src with routing yml file + repo config in app for services container".
 
