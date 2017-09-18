@@ -27,8 +27,7 @@ class CommentController extends Controller {
       $comment->setAddAt(new \DateTime());
       $this->getDoctrine()->persist($comment);
       $this->getDoctrine()->flush();
-      header("location: http://blog-forteroche.dev/comment/display");
-      die;
+      return $this->redirect("comment_display");
     }
     return $this->render("comment/add.html.twig");
   }
@@ -43,8 +42,7 @@ class CommentController extends Controller {
       $comment->setLvl($request->request->get("lvl"));
       $comment->setReportCom($request->request->get("report_com"));
       $this->getDoctrine()->flush();
-      header("location: http://blog-forteroche.dev/comment/display");
-      die;
+      return $this->redirect("comment_display");
     }
     return $this->render("comment/update.html.twig", ["comment"=>$comment]);
   }
@@ -53,7 +51,6 @@ class CommentController extends Controller {
     $comment = $this->getDoctrine()->getRepository("Entity\Comment")->find($id);
     $this->getDoctrine()->remove($comment);
     $this->getDoctrine()->flush();
-    header("location: http://blog-forteroche.dev/comment/display");
-    die;
+    return $this->redirect("comment_display");
   }
 }

@@ -2,13 +2,13 @@
 
 namespace Framework;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Tools\Setup;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
+use Symfony\Component\Routing\Generator\UrlGenerator;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Class Controller
@@ -16,42 +16,27 @@ use Symfony\Component\HttpKernel\Controller\ControllerResolver;
  */
 class Controller {
   /**
-   * @var \Twig_Environment
-   */
-  private $twig;
-
-  /**
-   * @var EntityManager
-   */
-  private $doctrine;
-
-  /**
    * Controller constructor.
    */
-  public function __construct() {
-    $loader = new \Twig_Loader_Filesystem([__DIR__.'/../src/View']);
-    $this->twig = new \Twig_Environment($loader, array(
-      'cache' => false,
-    ));
+  public function __construct()
+  {
+    global $container;
+    $this->container = $container;
+  }
 
-
-    $dbParams = array(
-        'driver'   => 'pdo_mysql',
-        'user'     => "root",
-        'password' => "3A30d0_3919&Ceé748E%",
-        'dbname'   => "blog-forteroche",
-        'charset'  => 'utf8',
-    );
-    $config = Setup::createAnnotationMetadataConfiguration([__DIR__."/../src/Entity"], false, __DIR__."/../web/cache");
-    $config->setAutoGenerateProxyClasses(true);
-    $this->doctrine = EntityManager::create($dbParams, $config);
+  /**
+   * @param $name
+   */
+  public function get($name)
+  {
+    return $this->container->get($name);
   }
 
   /**
    * @return EntityManager
    */
   protected function getDoctrine() {
-    return $this->doctrine;
+    return $this->container->get("doctrine")->getManager();
   }
 
   /**
@@ -60,7 +45,7 @@ class Controller {
    * @return Response
    */
   protected function render($filename, $data = []) {
-    $template = $this->twig->load($filename);
+    $template = $this->container->get("templating")->getTwig()->load($filename);
     return new Response($template->render($data));
   }
 
@@ -70,8 +55,7 @@ class Controller {
    */
   protected function redirect($route, $args = [])
   {
-    $context = new RequestContext();
-    $generator = new UrlGenerator($this->routeCollection, $context);
+    $generator = new UrlGenerator($this->container->getParameter("routes"), $this->container->get("context"));
     return new RedirectResponse($generator->generate($route,$args));
   }
 }

@@ -1,4 +1,8 @@
 services:
+    templating:
+        class:     Framework\Container\Templating
+    doctrine:
+        class:     Framework\Container\Doctrine
     request_stack:
         class:     Symfony\Component\HttpFoundation\RequestStack
     context:
