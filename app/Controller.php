@@ -63,4 +63,15 @@ class Controller {
     $template = $this->twig->load($filename);
     return new Response($template->render($data));
   }
+
+  /**
+   * @param $route
+   * @param array $args
+   */
+  protected function redirect($route, $args = [])
+  {
+    $context = new RequestContext();
+    $generator = new UrlGenerator($this->routeCollection, $context);
+    return new RedirectResponse($generator->generate($route,$args));
+  }
 }

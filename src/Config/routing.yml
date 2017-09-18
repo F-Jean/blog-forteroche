@@ -1,0 +1,33 @@
+homepage:
+    path:   /
+    defaults: {_controller: 'Controller\DefaultController::indexAction'}
+chapter_display:
+    path:   /chapter/display
+    defaults: {_controller: 'Controller\ChapterController::listAction'}
+chapter_add:
+    path:   /chapter/add
+    defaults: {_controller: 'Controller\ChapterController::addAction'}
+chapter_update:
+    path:   /chapter/update/{id}
+    defaults: {_controller: 'Controller\ChapterController::updateAction'}
+chapter_delete:
+    path:   /chapter/delete/{id}
+    defaults: {_controller: 'Controller\ChapterController::deleteAction'}
+comment_display:
+    path:   /comment/display
+    defaults: {_controller: 'Controller\CommentController::listAction'}
+comment_add:
+    path:   /comment/add
+    defaults: {_controller: 'Controller\CommentController::addAction'}
+comment_update:
+    path:   /comment/update/{id}
+    defaults: {_controller: 'Controller\CommentController::updateAction'}
+comment_delete:
+    path:   /comment/delete{id}
+    defaults: {_controller: 'Controller\CommentController::deleteAction'}
+admin_login:
+    path:   /login
+    defaults: {_controller: 'Controller\AdminController::loginAction'}
+admin_logout:
+    path:   /logout
+    defaults: {_controller: 'Controller\AdminController::logoutAction'}

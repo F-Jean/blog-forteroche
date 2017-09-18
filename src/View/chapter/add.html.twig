@@ -3,6 +3,7 @@
 {% block title %}{{ parent() }} - Gestion des chapitres{% endblock %}
 
 {% block container %}
+  <div class="container-fluid">
     <div class="col-md-6 col-md-offset-3">
         <div class="jumbotron">
             <h1>Ajouter un chapitre</h1>
@@ -16,7 +17,8 @@
                 <label>Contenu du chapitre :</label>
                 <textarea class="form-control" required name="content"></textarea>
             </div>
-            <button type="submit" class="btn btn-block btn-success">Valider</button>
+              <button type="submit" class="btn btn-block btn-success">Valider</button>
         </form>
     </div>
+  </div>
 {% endblock %}

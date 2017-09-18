@@ -18,7 +18,13 @@ class CommentController extends Controller {
   public function addAction(Request $request) {
     if($request->getMethod()=='POST') {
       $comment = new Comment();
-      $comment->setName($request->request->get("name"));
+      $comment->setPseudo($request->request->get("pseudo"));
+      $comment->setContent($request->request->get("content"));
+      $comment->setChapter($request->request->get("chapter_id"));
+      $comment->setParent($request->request->get("parent_id"));
+      $comment->setLvl($request->request->get("lvl"));
+      $comment->setReportCom($request->request->get("report_com"));
+      $comment->setAddAt(new \DateTime());
       $this->getDoctrine()->persist($comment);
       $this->getDoctrine()->flush();
       header("location: http://blog-forteroche.dev/comment/display");
@@ -30,7 +36,12 @@ class CommentController extends Controller {
   public function updateAction(Requets $request, $id) {
     $comment = $this->getDoctrine->getRepository("Entity\Comment")->find($id);
     if($request->getMethod()=="POST") {
-      $comment->setName($request->request->get("name"));
+      $comment->setPseudo($request->request->get("pseudo"));
+      $comment->setContent($request->request->get("content"));
+      $comment->setChapter($request->request->get("chapter_id"));
+      $comment->setParent($request->request->get("parent_id"));
+      $comment->setLvl($request->request->get("lvl"));
+      $comment->setReportCom($request->request->get("report_com"));
       $this->getDoctrine()->flush();
       header("location: http://blog-forteroche.dev/comment/display");
       die;

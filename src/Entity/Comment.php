@@ -34,13 +34,6 @@ class Comment {
   private $content;
 
   /**
-   * @var date
-   *
-   * @Column(name="add_at", type="date")
-   */
-  private $addAt;
-
-  /**
    * @var int
    *
    * @ManyToOne(targetEntity="Chapter")
@@ -66,9 +59,15 @@ class Comment {
   /**
    * @var int
    *
-   * @Column(name="report_com", type="integer")
+   * @Column(name="report_com", type="integer", nullable=true)
    */
   private $reportCom;
+  /**
+   * @var datetime
+   *
+   * @Column(name="add_at", type="datetime")
+   */
+  private $addAt;
 
   /**
    * @return int
@@ -112,73 +111,72 @@ class Comment {
     $this->content = $content;
   }
 
-/**
- * @return date
- */
-public function getAddAt() {
-  return $this->addAt;
-}
+  /**
+   * @return int
+   */
+  public function getChapter() {
+    return $this->chapter;
+  }
 
-/**
- * @param date $add_At
- */
-public function setAddAt($addAt) {
-  $this->addAt = $addAt;
-}
+  /**
+   * @param int $chapter_id
+   */
+  public function setChapter($chapter) {
+    $this->chapter = $chapter;
+  }
 
-/**
- * @return int
- */
-public function getChapter() {
-  return $this->chapter;
-}
+  /**
+   * @return int
+   */
+  public function getParent() {
+    return $this->parent;
+  }
 
-/**
- * @param int $chapter_id
- */
-public function setChapter($chapter) {
-  $this->chapter = $chapter;
-}
+  /**
+   * @param int $parent_id
+   */
+  public function setParent($parent) {
+    $this->parent = $parent;
+  }
 
-/**
- * @return int
- */
-public function getParent() {
-  return $this->parent;
-}
+  /**
+   * @return int
+   */
+  public function getLvl() {
+    return $this->lvl;
+  }
 
-/**
- * @param int $parent_id
- */
-public function setParent($parent) {
-  $this->parent = $parent;
-}
+  /**
+   * @param int $lvl
+   */
+  public function setLvl($lvl) {
+    $this->lvl = $lvl;
+  }
 
-/**
- * @return int
- */
-public function getLvl() {
-  return $this->lvl;
-}
+  /**
+   * @return int
+   */
+  public function getReportCom() {
+    return $this->reportCom;
+  }
 
-/**
- * @param int $lvl
- */
-public function setLvl($lvl) {
-  $this->lvl = $lvl;
-}
+  /**
+   * @param int $report_com
+   */
+  public function setReportCom($reportCom) {
+    $this->reportCom = $reportCom;
+  }
+  /**
+   * @return datetime
+   */
+  public function getAddAt() {
+    return $this->addAt;
+  }
 
-/**
- * @return int
- */
-public function getReportCom() {
-  return $this->reportCom;
-}
-
-/**
- * @param int $report_com
- */
-public function setReportCom($reportCom) {
-  $this->reportCom = $reportCom;
-}
+  /**
+   * @param datetime
+   */
+  public function setAddAt($addAt) {
+    $this->addAt = $addAt;
+  }
 }

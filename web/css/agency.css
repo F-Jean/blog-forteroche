@@ -180,7 +180,7 @@ fieldset[disabled] .btn-xl.active {
   text-transform: uppercase;
   font-weight: 400;
   letter-spacing: 1px;
-  color: white;
+  color: #f9c81e;
 }
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
@@ -218,7 +218,7 @@ fieldset[disabled] .btn-xl.active {
 }
 @media (min-width: 768px) {
   .navbar-custom.affix {
-    background-color: #222222;
+    background-color: rgba(34,34,34,0.93);
     padding: 10px 0;
   }
   .navbar-custom.affix .navbar-brand {
@@ -226,7 +226,7 @@ fieldset[disabled] .btn-xl.active {
   }
 }
 header {
-  background-image: url('../images/header.png');
+  background-image: url('../images/forestbridge.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -234,16 +234,19 @@ header {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  text-align: center;
-  color: white;
 }
 
-@media (min-width: 768px) {
   header .head_img {
-    padding-top: 300px;
-    padding-bottom: 200px;
+    padding-top: 210px;
+    padding-bottom: 240px;
   }
-}
+  .text-header {
+    font-size: 100px;
+    text-align: center;
+    color: rgba(255,255,255,0.85);
+    padding-top: 250px;
+  }
+
 section {
   padding: 100px 0;
 }
@@ -259,6 +262,10 @@ section h3.section-subheading {
   font-style: italic;
   font-weight: 400;
   margin-bottom: 75px;
+  color: grey;
+}
+section h3.section-subheading#h3colorchoice {
+  color: white;
 }
 @media (min-width: 768px) {
   section {
@@ -522,7 +529,7 @@ aside.clients img {
 }
 section#contact {
   background-color: #222222;
-  background-image: url('../img/map-image.png');
+  background-image: url('../images/map-image.png');
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -710,4 +717,11 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #fed136;
+}
+
+/* Mes ajouts */
+
+.btn .btn-block .btn-success {
+  margin-top: 15px;
+  margin-bottom: 10px;
 }

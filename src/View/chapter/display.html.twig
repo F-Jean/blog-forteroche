@@ -3,10 +3,11 @@
 {% block title %}{{ parent() }} - Gestion des chapitres{% endblock %}
 
 {% block container %}
+  <div class="container">
     <div class="col-md-12">
         <div class="jumbotron">
             <h1>Gestion des chapitres</h1>
-            <p>Ajoute, modifie ou supprime des chapitres.</p>
+            <p>Ajouter, modifier ou supprimer des chapitres.</p>
             <p><a class="btn btn-primary btn-lg" href="/chapter/add" role="button">Ajouter un nouveau chapitre</a></p>
         </div>
         <table class="table table-bordered">
@@ -31,4 +32,5 @@
             </tbody>
         </table>
     </div>
+  </div>
 {% endblock %}

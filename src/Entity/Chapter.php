@@ -32,13 +32,12 @@ class Chapter {
    * @Column(name="content", type="string")
    */
   private $content;
-
   /**
-   * @var date
+   * @var datetime
    *
-   * @Column(name="add_at", type="date")
+   * @Column(name="add_at", type="datetime")
    */
-  private $add_At;
+  private $addAt;
 
   /**
    * @return int
@@ -83,16 +82,16 @@ class Chapter {
   }
 
   /**
-   * @return date
+   * @return datetime
    */
-  public function getAdd_At() {
-    return $this->add_At;
+  public function getAddAt() {
+    return $this->addAt;
   }
 
   /**
-   * @param date $add_At
+   * @param datetime
    */
-  public function setAdd_At($add_At) {
-    $this->add_At = $add_At;
+  public function setAddAt($addAt) {
+    $this->addAt = $addAt;
   }
 }

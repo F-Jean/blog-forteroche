@@ -14,7 +14,7 @@
           <div class="row text-center">
               <div class="col-md-12">
                 <div class="col-md-12 col-sm-12 chapter-item">
-                    <a href="#chapterModal1" class="chapter-content-link" data-toggle="modal">
+                    <a href="#chapterModal-{{ chapter.id|last }}" class="chapter-content-link" data-toggle="modal">
                       <h4>Dernier chapitre</h4>
                     </a>
                 </div>
@@ -35,7 +35,7 @@
           <div class="row">
             {% for chapter in chapters %}
               <div class="col-md-4 col-sm-6 chapter-item">
-                  <a href="#chapterModal1" class="chapter-content-link" data-toggle="modal">
+                  <a href="#chapterModal-{{ chapter.id }}" class="chapter-content-link" data-toggle="modal">
                     <div class="chapter-caption">
                         <h4>{{ chapter.title }}</h4>
                     </div>
@@ -46,34 +46,28 @@
   </section>
 
   <!-- Chapters content -->
-  <div class="chapter-modal modal fade" id="chapterModal1" tabindex="-1" role="dialog" aria-hidden="true">
+  {% for chapter in chapters %}
+  <div class="chapter-modal modal fade" id="chapterModal-{{ chapter.id }}" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
           <div class="modal-content">
-              <div class="close-modal" data-dismiss="modal">
-                  <div class="lr">
-                      <div class="rl">
-                      </div>
-                  </div>
-              </div>
-              <div class="container">
-                  <div class="row">
-                      <div class="col-lg-8 col-lg-offset-2">
-                          <div class="modal-body">
-                              <!-- Chapter Details Go Here -->
-                              <h2>{{ chapter.title }}</h2>
-                              <p class="item-intro text-muted">Texte d'introduction.</p>
-                              <p>{{ chapter.content }}</p>
-                              <ul class="list-inline">
-                                  <li>Date:{{ chapter.add_at }}</li>
-                              </ul>
-                              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Fermer le chapitre </button>
-                          </div>
+              <div class="row">
+                  <div class="col-lg-8 col-lg-offset-2">
+                      <div class="modal-body">
+                          <!-- Chapter Details Go Here -->
+                          <h2>{{ chapter.title }}</h2>
+                          <p class="item-intro text-muted">Texte d'introduction.</p>
+                          <p>{{ chapter.content }}</p>
+                          <ul class="list-inline">
+                              <li>Date:{{ chapter.addAt|date("d/m/Y") }}</li>
+                          </ul>
+                          <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Fermer le chapitre </button>
                       </div>
                   </div>
               </div>
           </div>
       </div>
   </div>
+{% endfor %}
 
   <!-- About Section -->
   <section id="about">
@@ -89,7 +83,7 @@
                   <ul class="timeline">
                       <li>
                           <div class="timeline-image">
-                              <img class="img-circle img-responsive" src="/img/about/1.jpg" alt="">
+                              <img class="img-circle img-responsive" src="/images/about/1.jpg" alt="">
                           </div>
                           <div class="timeline-panel">
                               <div class="timeline-heading">
@@ -103,7 +97,7 @@
                       </li>
                       <li class="timeline-inverted">
                           <div class="timeline-image">
-                              <img class="img-circle img-responsive" src="/img/about/2.jpg" alt="">
+                              <img class="img-circle img-responsive" src="/images/land2.jpg" alt="">
                           </div>
                           <div class="timeline-panel">
                               <div class="timeline-heading">
@@ -117,7 +111,7 @@
                       </li>
                       <li>
                           <div class="timeline-image">
-                              <img class="img-circle img-responsive" src="/img/about/3.jpg" alt="">
+                              <img class="img-circle img-responsive" src="/images/orora.jpg" alt="">
                           </div>
                           <div class="timeline-panel">
                               <div class="timeline-heading">
@@ -131,7 +125,7 @@
                       </li>
                       <li class="timeline-inverted">
                           <div class="timeline-image">
-                              <img class="img-circle img-responsive" src="/img/about/4.jpg" alt="">
+                              <img class="img-circle img-responsive" src="/images/about/4.jpg" alt="">
                           </div>
                           <div class="timeline-panel">
                               <div class="timeline-heading">
@@ -155,7 +149,7 @@
           <div class="row">
               <div class="col-lg-12 text-center">
                   <h2 class="section-heading">Me Contacter</h2>
-                  <h3 class="section-subheading text-muted">Un projet de collaboration ou un script intéressant, n'hésitez pas à me contacter.</h3>
+                  <h3 class="section-subheading text-muted" id="h3colorchoice">Un projet de collaboration ou un script intéressant, n'hésitez pas à me contacter.</h3>
               </div>
           </div>
           <div class="row">
@@ -164,28 +158,28 @@
                       <div class="row">
                           <div class="col-md-6">
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
+                                  <input type="text" class="form-control" placeholder="Votre nom *" id="name" required data-validation-required-message="Merci d'entrer votre nom.">
                                   <p class="help-block text-danger"></p>
                               </div>
                               <div class="form-group">
-                                  <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
+                                  <input type="email" class="form-control" placeholder="Votre Email *" id="email" required data-validation-required-message="Merci d'entrer votre adresse e-mail.">
                                   <p class="help-block text-danger"></p>
                               </div>
                               <div class="form-group">
-                                  <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                  <input type="tel" class="form-control" placeholder="N° de téléphone *" id="phone" required data-validation-required-message="Merci d'entrer votre N° de téléphone.">
                                   <p class="help-block text-danger"></p>
                               </div>
                           </div>
                           <div class="col-md-6">
                               <div class="form-group">
-                                  <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                  <textarea class="form-control" placeholder="Votre message *" id="message" required data-validation-required-message="Merci de renseigner votre message."></textarea>
                                   <p class="help-block text-danger"></p>
                               </div>
                           </div>
                           <div class="clearfix"></div>
                           <div class="col-lg-12 text-center">
                               <div id="success"></div>
-                              <button type="submit" class="btn btn-xl">Send Message</button>
+                              <button type="submit" class="btn btn-xl">Envoyer le message</button>
                           </div>
                       </div>
                   </form>

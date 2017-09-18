@@ -1,0 +1,39 @@
+{% extends 'templates/layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Modération des commentaires{% endblock %}
+
+{% block container %}
+  <div class="container">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <h1>Modération des commentaires</h1>
+            <p>Modifier ou supprimer des commentaires.</p>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Commentaire</th>
+                    <th>Commentaire parent</th>
+                    <th>Niveau</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comment in comments %}
+                    <tr>
+                        <td>{{ comment.id }}</td>
+                        <td>{{ comment.content }}</td>
+                        <td>{{ comment.parent }}</td>
+                        <td>{{ comment.lvl }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="/comment/update/{{ comment.id }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a class="btn btn-primary" href="/comment/delete/{{ comment.id }}"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </div>
+{% endblock %}
