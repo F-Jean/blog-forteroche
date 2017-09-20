@@ -12,20 +12,16 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Pseudo</th>
                     <th>Commentaire</th>
-                    <th>Commentaire parent</th>
-                    <th>Niveau</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for comment in comments %}
                     <tr>
-                        <td>{{ comment.id }}</td>
-                        <td>{{ comment.content }}</td>
-                        <td>{{ comment.parent }}</td>
-                        <td>{{ comment.lvl }}</td>
+                        <td>{{ comment.pseudo }}</td>
+                        <td>{{ comment.content|raw }}</td>
                         <td>
                             <a class="btn btn-primary" href="/comment/update/{{ comment.id }}"><span class="glyphicon glyphicon-pencil"></span></a>
                             <a class="btn btn-primary" href="/comment/delete/{{ comment.id }}"><span class="glyphicon glyphicon-remove"></span></a>

@@ -13,17 +13,17 @@ chapter_update:
 chapter_delete:
     path:   /chapter/delete/{id}
     defaults: {_controller: 'Controller\ChapterController::deleteAction'}
-comment_display:
-    path:   /comment/display
+comment_moderate:
+    path:   /comment/moderate
     defaults: {_controller: 'Controller\CommentController::listAction'}
 comment_add:
-    path:   /comment/add
-    defaults: {_controller: 'Controller\CommentController::addAction'}
+    path:   /comment/add/{chapter}/{comment}
+    defaults: {_controller: 'Controller\CommentController::addAction', comment: null}
 comment_update:
     path:   /comment/update/{id}
     defaults: {_controller: 'Controller\CommentController::updateAction'}
 comment_delete:
-    path:   /comment/delete{id}
+    path:   /comment/delete/{id}
     defaults: {_controller: 'Controller\CommentController::deleteAction'}
 admin_login:
     path:   /login

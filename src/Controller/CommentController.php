@@ -12,37 +12,39 @@ use Symfony\Component\HttpFoundation\Request;
 class CommentController extends Controller {
   public function listAction() {
     $comments = $this->getDoctrine()->getRepository("Entity\Comment")->findAll();
-    return $this->render("comment/display.html.twig", ["comments" => $comments]);
+    return $this->render("comment/moderate.html.twig", ["comments" => $comments]);
   }
 
-  public function addAction(Request $request) {
+  public function addAction(Request $request, $chapter, $parent = null) {
+    $chapter=$this->getDoctrine()->getRepository("Entity\Chapter")->find($chapter);
+    $lvl=0;
+    if ($parent != null) {
+      $parent=$this->getDoctrine()->getRepository("Entity\Comment")->find($parent);
+      $lvl=$parent->getLvl()+1;
+    }
     if($request->getMethod()=='POST') {
       $comment = new Comment();
+      $comment->setChapter($chapter);
+      $comment->setParent($parent);
       $comment->setPseudo($request->request->get("pseudo"));
       $comment->setContent($request->request->get("content"));
-      $comment->setChapter($request->request->get("chapter_id"));
-      $comment->setParent($request->request->get("parent_id"));
-      $comment->setLvl($request->request->get("lvl"));
-      $comment->setReportCom($request->request->get("report_com"));
+      $comment->setReportCom(false);
+      $comment->setLvl($lvl);
       $comment->setAddAt(new \DateTime());
       $this->getDoctrine()->persist($comment);
       $this->getDoctrine()->flush();
-      return $this->redirect("comment_display");
+      return $this->redirect("homepage");
     }
     return $this->render("comment/add.html.twig");
   }
 
-  public function updateAction(Requets $request, $id) {
-    $comment = $this->getDoctrine->getRepository("Entity\Comment")->find($id);
+  public function updateAction(Request $request, $id) {
+    $comment = $this->getDoctrine()->getRepository("Entity\Comment")->find($id);
     if($request->getMethod()=="POST") {
       $comment->setPseudo($request->request->get("pseudo"));
       $comment->setContent($request->request->get("content"));
-      $comment->setChapter($request->request->get("chapter_id"));
-      $comment->setParent($request->request->get("parent_id"));
-      $comment->setLvl($request->request->get("lvl"));
-      $comment->setReportCom($request->request->get("report_com"));
       $this->getDoctrine()->flush();
-      return $this->redirect("comment_display");
+      return $this->redirect("comment_moderate");
     }
     return $this->render("comment/update.html.twig", ["comment"=>$comment]);
   }
@@ -51,6 +53,6 @@ class CommentController extends Controller {
     $comment = $this->getDoctrine()->getRepository("Entity\Comment")->find($id);
     $this->getDoctrine()->remove($comment);
     $this->getDoctrine()->flush();
-    return $this->redirect("comment_display");
+    return $this->redirect("comment_moderate");
   }
 }
