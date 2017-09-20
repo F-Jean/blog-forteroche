@@ -32,12 +32,18 @@ class Chapter {
    * @Column(name="content", type="string")
    */
   private $content;
+
   /**
    * @var datetime
    *
    * @Column(name="add_at", type="datetime")
    */
   private $addAt;
+
+  /**
+   * @OneToMany(targetEntity="Comment", mappedBy="chapter")
+   */
+  private $comments;
 
   /**
    * @return int
@@ -93,5 +99,19 @@ class Chapter {
    */
   public function setAddAt($addAt) {
     $this->addAt = $addAt;
+  }
+
+  /**
+   * @return string
+   */
+  public function getComments() {
+    return $this->comments;
+  }
+
+  /**
+   * @param string $comments
+   */
+  public function setComments($comments) {
+    $this->comments = $comments;
   }
 }

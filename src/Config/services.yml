@@ -1,0 +1,4 @@
+services:
+    session_manager:
+        class: Manager\SessionManager
+        arguments: ["@request_stack","@doctrine"]
