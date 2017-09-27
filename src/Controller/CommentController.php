@@ -55,4 +55,21 @@ class CommentController extends Controller {
     $this->getDoctrine()->flush();
     return $this->redirect("comment_moderate");
   }
+
+/*
+  public function reportAction($id) {
+    $comment = $this->getDoctrine()->getRepository("Entity\Comment")->find($id);
+      $comment->setReportCom(true);
+      $this->getDoctrine()->flush();
+      return $this->redirect("homepage");
+  }
+
+  public function findAction($reportCom) {
+    $comment = $this->getDoctrine()->getRepository("Entity\Comment")->find($reportCom);
+    if ($reportCom === true) {
+      $this->getDoctrine()->persist($comment);
+      $this->getDoctrine()->flush();
+    }
+    return $this->render("comment/moderate.html.twig");
+  }*/
 }

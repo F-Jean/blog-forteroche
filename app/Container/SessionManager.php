@@ -8,32 +8,31 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-/**
- * @var SessionInterface
- */
-private $session;
+class SessionManager
+{
+  /**
+   * @var SessionInterface
+   */
+  private $session;
 
-/**
- * @var \Doctrine\ORM\EntityManager
- */
- private $entityManager;
+  /**
+   * @var \Doctrine\ORM\EntityManager
+   */
+   private $entityManager;
 
- /**
+  /**
   * @var Admin
   */
   private $admin = null;
 
- /**
-  * @var SessionManager constructor.
-  * @param RequestStack $requestStack
-  * @param Doctrine $doctrine
-  */
-class SessionManager
-{
-  function __construct(RequestStack $requestStack, Doctrine $doctrine)
+  /**
+   * SessionManager constructor.
+   * @param RequestStack $requestStack
+   * @param Doctrine $doctrine
+   */
+  public function __construct(RequestStack $requestStack, Doctrine $doctrine)
   {
-    if($requestStack->getCurrentRequest()->getSession() === null)
-    {
+    if($requestStack->getCurrentRequest()->getSession() === null) {
       $requestStack->getCurrentRequest()->setSession(new Session());
     }
     $this->session = $requestStack->getCurrentRequest()->getSession();
