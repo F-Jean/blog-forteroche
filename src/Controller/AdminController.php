@@ -13,13 +13,11 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AdminController extends Controller
 {
-    public function loginAction(Request $request)
-    {
-      if($request->getMethod()=='POST')
-      {
-        $this->get("session_manager")->set($request->request->all());
-        return $this->redirect("index");
-      }
-      return $this->render("admin/login.html.twig");
+  public function loginAction(Request $request) {
+    if($request->getMethod() == "POST") {
+      $this->get("session_manager")->set($request->request->all());
+      return $this->redirect("homepage");
     }
+    return $this->render("admin/login.html.twig");
+  }
 }

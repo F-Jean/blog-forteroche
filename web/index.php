@@ -14,6 +14,9 @@ $container->setParameter('routes', $routes);
 $loader = new \Symfony\Component\DependencyInjection\Loader\YamlFileLoader($container, new \Symfony\Component\Config\FileLocator(__DIR__."/../app/config"));
 $loader->load('services.yml');
 
+$loader = new \Symfony\Component\DependencyInjection\Loader\YamlFileLoader($container, new \Symfony\Component\Config\FileLocator(__DIR__."/../src/Config"));
+$loader->load('services.yml');
+
 $response = $container->get("framework")->handle(\Symfony\Component\HttpFoundation\Request::createFromGlobals());
 
 $response->send();

@@ -73,7 +73,7 @@
                                     <ul class="list-inline">
                                         <li>Date: {{ comment.addAt|date("d/m/Y") }}</li>
                                     </ul>
-                                    <a href="comment/add/{{ comment.chapter.id }}/{{ comment.id }}">Répondre | </a><a href="">Signaler</a>
+                                    <a href="comment/add/{{ comment.chapter.id }}/{{ comment.id }}">Répondre | </a><a href="comment/report/{{ comment.id }}" target="_blank">Signaler</a>
                                 </div>
                             </div>
                             {% endfor %}

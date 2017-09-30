@@ -5,7 +5,7 @@
  use Symfony\Component\HttpKernel\HttpKernel;
 
  /**
-  * Class Kernel
+  * Class Framework
   * @package Framework
   */
  class Framework extends HttpKernel
