@@ -14,7 +14,7 @@
           <div class="row text-center">
               <div class="col-md-12">
                 <div class="col-md-12 col-sm-12 chapter-item">
-                    <a href="#chapterModal-{{ chapter.id|last }}" class="chapter-content-link" data-toggle="modal">
+                    <a href="#chapterModal-{{ chapter.id }}" class="chapter-content-link" data-toggle="modal">
                       <h4>Dernier chapitre</h4>
                     </a>
                 </div>
@@ -73,7 +73,7 @@
                                     <ul class="list-inline">
                                         <li>Date: {{ comment.addAt|date("d/m/Y") }}</li>
                                     </ul>
-                                    <a href="comment/add/{{ comment.chapter.id }}/{{ comment.id }}">Répondre | </a><a href="">Signaler</a>
+                                    <a href="comment/add/{{ comment.chapter.id }}/{{ comment.id }}">Répondre | </a><a href="comment/report/{{ comment.id }}" target="_blank">Signaler</a>
                                 </div>
                             </div>
                             {% endfor %}

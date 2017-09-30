@@ -25,6 +25,9 @@ comment_update:
 comment_delete:
     path:   /comment/delete/{id}
     defaults: {_controller: 'Controller\CommentController::deleteAction'}
+comment_report:
+    path:   /comment/report/{id}
+    defaults: {_controller: 'Controller\CommentController::reportAction'}
 admin_login:
     path:   /login
     defaults: {_controller: 'Controller\AdminController::loginAction'}

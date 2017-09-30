@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CommentController extends Controller {
   public function listAction() {
-    $comments = $this->getDoctrine()->getRepository("Entity\Comment")->findAll();
+    $comments = $this->getDoctrine()->getRepository("Entity\Comment")->findByReportCom(true);
     return $this->render("comment/moderate.html.twig", ["comments" => $comments]);
   }
 
@@ -54,5 +54,11 @@ class CommentController extends Controller {
     $this->getDoctrine()->remove($comment);
     $this->getDoctrine()->flush();
     return $this->redirect("comment_moderate");
+  }
+
+  public function reportAction($id) {
+    $comment = $this->getDoctrine()->getRepository("Entity\Comment")->find($id);
+      $comment->setReportCom(true);
+      $this->getDoctrine()->flush();
   }
 }
