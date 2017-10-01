@@ -1,8 +1,12 @@
 services:
     templating:
         class:     Framework\Container\Templating
+        arguments: ["@session_manager"]
     doctrine:
         class:     Framework\Container\Doctrine
+    user_session:
+        class:     Framework\Container\UserSession
+        arguments: ["@request_stack"]
     request_stack:
         class:     Symfony\Component\HttpFoundation\RequestStack
     context:
