@@ -3,12 +3,11 @@
 namespace Framework\Container;
 
 use Doctrine\ORM\EntityManager;
-use Framework\Container\Doctrine;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class SessionManager
+class UserSession
 {
   /**
    * @var SessionInterface
@@ -16,32 +15,25 @@ class SessionManager
   private $session;
 
   /**
-   * @var \Doctrine\ORM\EntityManager
-   */
-   private $entityManager;
-
-  /**
   * @var Admin
   */
   private $admin = null;
 
   /**
-   * SessionManager constructor.
+   * UserSession constructor.
    * @param RequestStack $requestStack
-   * @param Doctrine $doctrine
    */
-  public function __construct(RequestStack $requestStack, Doctrine $doctrine)
+  public function __construct(RequestStack $requestStack)
   {
     if($requestStack->getCurrentRequest()->getSession() === null) {
       $requestStack->getCurrentRequest()->setSession(new Session());
     }
     $this->session = $requestStack->getCurrentRequest()->getSession();
-    $this->entityManager = $doctrine->getManager();
   }
 
   public function set($formData)
   {
-    $admin = $this->entityManager->getRepository("Entity\Admin")->findOneByLogin($formData["login"]);
+    $admin = $this->check($formData["login"]);
     if($admin === null)
     {
       throw new \Exception("Utilisateur inexistant");
@@ -65,11 +57,16 @@ class SessionManager
   {
     if($this->isAuthenticated()) {
       if($this->admin === null) {
-        $this->admin = $this->entityManager->getRepository("Entity\Admin")->find($this->session->get("AUTH"));
+        $this->admin = $this->provider($this->session->get("AUTH"));
       }
       return $this->admin;
     } else {
       return null;
     }
+  }
+
+  public function clear()
+  {
+    $this->session->remove("AUTH");
   }
 }

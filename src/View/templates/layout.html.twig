@@ -74,13 +74,18 @@
                   <li>
                       <a class="page-scroll" href="/#contact">Contact</a>
                   </li>
-                  <li class="page-scroll dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Administration <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                          <li><a href="/chapter/display">Chapitres</a></li>
-                          <li><a href="/comment/moderate">Commentaires</a></li>
-                      </ul>
-                  </li>
+                  {% if session is not null and session.superAdmin %}
+                    <li>
+                        <a class="page-scroll" href="">Bienvenue {{ session.login }} :</a>
+                    </li>
+                    <li class="page-scroll dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Administration <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/chapter/display">Chapitres</a></li>
+                            <li><a href="/comment/moderate">Commentaires</a></li>
+                        </ul>
+                    </li>
+                  {% endif %}
               </ul>
           </div>
           <!-- /.navbar-collapse -->
@@ -119,8 +124,13 @@
               </div>
               <div class="col-md-4">
                   <ul class="list-inline quicklinks">
+                    {% if session is not null %}
+                      <li><a href="/logout">Se déconnecter</a>
+                      </li>
+                    {% else %}
                       <li><a href="/login">Connexion</a>
                       </li>
+                    {% endif %}
                       <li><a href="#">Privacy Policy</a>
                       </li>
                       <li><a href="#">Terms of Use</a>

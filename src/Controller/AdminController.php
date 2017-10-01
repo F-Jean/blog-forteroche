@@ -20,4 +20,9 @@ class AdminController extends Controller
     }
     return $this->render("admin/login.html.twig");
   }
+
+  public function logoutAction(Request $request) {
+      $this->get("session_manager")->clear();
+      return $this->redirect("homepage");
+  }
 }

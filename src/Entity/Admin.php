@@ -34,6 +34,13 @@ class Admin
    */
   private $password;
 
+  /**
+   * @var boolean
+   *
+   * @Column(name="superAdmin", type="boolean")
+   */
+  private $superAdmin;
+
 
   /**
    * @return int
@@ -48,7 +55,7 @@ class Admin
   public function setId($id) {
     $this->id = $id;
   }
-  
+
   /**
    * @return string
    */
@@ -79,5 +86,21 @@ class Admin
   public function setPassword($password)
   {
     $this->password = $password;
+  }
+
+  /**
+   * @return bool
+   */
+  public function getSuperAdmin()
+  {
+    return $this->superAdmin;
+  }
+
+  /**
+   * @param string $superAdmin
+   */
+  public function setSuperAdmin($superAdmin)
+  {
+    $this->superAdmin = $superAdmin;
   }
 }
