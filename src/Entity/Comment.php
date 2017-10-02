@@ -44,7 +44,7 @@ class Comment {
   /**
    * @var int
    *
-   * @ManyToOne(targetEntity="Comment")
+   * @ManyToOne(targetEntity="Comment", inversedBy="children")
    * @JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
    */
   private $parent;
@@ -68,6 +68,11 @@ class Comment {
    * @Column(name="add_at", type="datetime")
    */
   private $addAt;
+
+  /**
+   *@OneToMany(targetEntity="Comment", mappedBy="parent")
+   */
+  private $children;
 
   /**
    * @return int
@@ -178,5 +183,19 @@ class Comment {
    */
   public function setAddAt($addAt) {
     $this->addAt = $addAt;
+  }
+
+  /**
+   * @return int
+   */
+  public function getChildren() {
+    return $this->children;
+  }
+
+  /**
+   * @param int $children
+   */
+  public function setChildren($children) {
+    $this->children = $children;
   }
 }

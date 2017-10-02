@@ -15,6 +15,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Titre</th>
+                    <th>N° chapitres</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
                     <tr>
                         <td>{{ chapter.id }}</td>
                         <td>{{ chapter.title }}</td>
+                        <td>{{ chapter.chapNum }}</td>
                         <td>
                             <a class="btn btn-primary" href="/chapter/update/{{ chapter.id }}"><span class="glyphicon glyphicon-pencil"></span></a>
                             <a class="btn btn-primary" href="/chapter/delete/{{ chapter.id }}"><span class="glyphicon glyphicon-remove"></span></a>

@@ -38,7 +38,7 @@ class UserSession
     {
       throw new \Exception("Utilisateur inexistant");
     }
-    if($admin->getPassword() != $formData["password"])
+    if($admin->getPassword() != sha1($formData["password"]))
     {
       throw new \Exception("Mot de passe erroné !");
     }

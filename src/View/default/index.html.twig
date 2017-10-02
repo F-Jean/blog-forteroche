@@ -14,7 +14,7 @@
           <div class="row text-center">
               <div class="col-md-12">
                 <div class="col-md-12 col-sm-12 chapter-item">
-                    <a href="#chapterModal-{{ chapter.id }}" class="chapter-content-link" data-toggle="modal">
+                    <a href="#chapterModal-{{ chapters|last.id }}" class="chapter-content-link" data-toggle="modal">
                       <h4>Dernier chapitre</h4>
                     </a>
                 </div>
@@ -56,7 +56,7 @@
                           <!-- Chapter Details Go Here -->
                           <h2>{{ chapter.title }}</h2>
                           <p class="item-intro text-muted">Sous-titre/introduction.</p>
-                          <p>{{ chapter.content }}</p>
+                          <p>{{ chapter.content|raw }}</p>
                           <ul class="list-inline">
                               <li>Date: {{ chapter.addAt|date("d/m/Y") }}</li>
                           </ul>
@@ -65,18 +65,42 @@
                                 <h2>Commentaires</h2>
                                 <h3><a href="comment/add/{{ chapter.id }}">Donnez votre avis </a></h3>
                             </div>
-                            {% for comment in chapter.comments %}
-                            <div class="col-lg-12">
-                                <div class="modal-body">
-                                    <h5>{{ comment.pseudo }} a dit :</h5>
-                                    <p>{{ comment.content|raw }}</p>
-                                    <ul class="list-inline">
-                                        <li>Date: {{ comment.addAt|date("d/m/Y") }}</li>
+                            <!-- recursive macro for the comments -->
+                            {% macro recursiveComment(comment) %}
+                              {% import _self as self %}
+                                <li>
+                                  <h5>{{ comment.pseudo }} a dit :</h5>
+                                  <p>{{ comment.content|raw }}</p>
+                                  <ul class="list-inline">
+                                      <li>Date: {{ comment.addAt|date("d/m/Y") }}</li>
+                                  </ul>
+                                  <a href="comment/add/{{ comment.chapter.id }}/{{ comment.id }}">Répondre | </a><a href="comment/report/{{ comment.id }}">Signaler</a>
+
+                                  {% if comment.children|length and comment.lvl <= 3 %}
+                                      <ul>
+                                          {% for child in comment.children %}
+                                              {{ self.recursiveComment(child) }}
+                                          {% endfor %}
+                                      </ul>
+                                  {% endif %}
+                                </li>
+                            {% endmacro %}
+                            <!-- end recursive macro for comments -->
+                            <!-- View that matches Twig recursive macro -->
+                            {% from _self import recursiveComment %}
+
+                              <div class="col-lg-12">
+                                  <div class="modal-body">
+                                    <ul>
+                                        {% for comment in chapter.comments %}
+                                          {% if comment.lvl == 0 %}
+                                            {{ recursiveComment(comment) }}
+                                          {% endif %}
+                                        {% endfor %}
                                     </ul>
-                                    <a href="comment/add/{{ comment.chapter.id }}/{{ comment.id }}">Répondre | </a><a href="comment/report/{{ comment.id }}" target="_blank">Signaler</a>
-                                </div>
-                            </div>
-                            {% endfor %}
+                                  </div>
+                              </div>
+                            <!-- End of the view -->
                         </div>
                           <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Fermer le chapitre </button>
                       </div>

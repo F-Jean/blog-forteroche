@@ -16,11 +16,12 @@ class CommentController extends Controller {
   }
 
   public function addAction(Request $request, $chapter, $parent = null) {
-    $chapter=$this->getDoctrine()->getRepository("Entity\Chapter")->find($chapter);
-    $lvl=0;
+    $chapter = $this->getDoctrine()->getRepository("Entity\Chapter")->find($chapter);
+    $lvl = 0;
     if ($parent != null) {
-      $parent=$this->getDoctrine()->getRepository("Entity\Comment")->find($parent);
-      $lvl=$parent->getLvl()+1;
+      $parent = $this->getDoctrine()->getRepository("Entity\Comment")->find($parent);
+      $lvl = $parent->getLvl()+1;
+      $parent = $parent->getParent()+1;
     }
     if($request->getMethod()=='POST') {
       $comment = new Comment();
@@ -60,5 +61,6 @@ class CommentController extends Controller {
     $comment = $this->getDoctrine()->getRepository("Entity\Comment")->find($id);
       $comment->setReportCom(true);
       $this->getDoctrine()->flush();
+      return $this->redirect("homepage");
   }
 }

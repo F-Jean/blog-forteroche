@@ -46,6 +46,13 @@ class Chapter {
   private $comments;
 
   /**
+   * @var int
+   *
+   * @Column(name="chap_num", type="integer")
+   */
+  private $chapNum;
+
+  /**
    * @return int
    */
   public function getId() {
@@ -113,5 +120,19 @@ class Chapter {
    */
   public function setComments($comments) {
     $this->comments = $comments;
+  }
+
+  /**
+   * @return int
+   */
+  public function getChapNum() {
+    return $this->chapNum;
+  }
+
+  /**
+   * @param int $chap_num
+   */
+  public function setChapNum($chapNum) {
+    $this->chapNum = $chapNum;
   }
 }

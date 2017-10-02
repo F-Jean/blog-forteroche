@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  */
 class ChapterController extends Controller {
-  public function listAction(Request $request) {
+  public function listAction() {
     $chapters = $this->getDoctrine()->getRepository("Entity\Chapter")->findAll();
     return $this->render("chapter/display.html.twig", ["chapters" => $chapters]);
   }
@@ -20,6 +20,7 @@ class ChapterController extends Controller {
       $chapter = new Chapter();
       $chapter->setTitle($request->request->get("title"));
       $chapter->setContent($request->request->get("content"));
+      $chapter->setChapNum($request->request->get("chapNum"));
       $chapter->setAddAt(new \DateTime());
       $this->getDoctrine()->persist($chapter);
       $this->getDoctrine()->flush();
@@ -33,6 +34,7 @@ class ChapterController extends Controller {
     if($request->getMethod()=="POST") {
       $chapter->setTitle($request->request->get("title"));
       $chapter->setContent($request->request->get("content"));
+      $chapter->setChapNum($request->request->get("chapNum"));
       $this->getDoctrine()->flush();
       return $this->redirect("chapter_display");
     }
