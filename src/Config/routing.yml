@@ -17,8 +17,8 @@ comment_moderate:
     path:   /comment/moderate
     defaults: {_controller: 'Controller\CommentController::listAction'}
 comment_add:
-    path:   /comment/add/{chapter}/{comment}
-    defaults: {_controller: 'Controller\CommentController::addAction', comment: null}
+    path:   /comment/add/{chapter}/{parent}
+    defaults: {_controller: 'Controller\CommentController::addAction', parent: null}
 comment_update:
     path:   /comment/update/{id}
     defaults: {_controller: 'Controller\CommentController::updateAction'}

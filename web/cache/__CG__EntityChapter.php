@@ -64,10 +64,10 @@ class Chapter extends \Entity\Chapter implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'Entity\\Chapter' . "\0" . 'id', '' . "\0" . 'Entity\\Chapter' . "\0" . 'title', '' . "\0" . 'Entity\\Chapter' . "\0" . 'content', '' . "\0" . 'Entity\\Chapter' . "\0" . 'addAt', '' . "\0" . 'Entity\\Chapter' . "\0" . 'comments'];
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Chapter' . "\0" . 'id', '' . "\0" . 'Entity\\Chapter' . "\0" . 'title', '' . "\0" . 'Entity\\Chapter' . "\0" . 'content', '' . "\0" . 'Entity\\Chapter' . "\0" . 'addAt', '' . "\0" . 'Entity\\Chapter' . "\0" . 'comments', '' . "\0" . 'Entity\\Chapter' . "\0" . 'chapNum'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'Entity\\Chapter' . "\0" . 'id', '' . "\0" . 'Entity\\Chapter' . "\0" . 'title', '' . "\0" . 'Entity\\Chapter' . "\0" . 'content', '' . "\0" . 'Entity\\Chapter' . "\0" . 'addAt', '' . "\0" . 'Entity\\Chapter' . "\0" . 'comments'];
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Chapter' . "\0" . 'id', '' . "\0" . 'Entity\\Chapter' . "\0" . 'title', '' . "\0" . 'Entity\\Chapter' . "\0" . 'content', '' . "\0" . 'Entity\\Chapter' . "\0" . 'addAt', '' . "\0" . 'Entity\\Chapter' . "\0" . 'comments', '' . "\0" . 'Entity\\Chapter' . "\0" . 'chapNum'];
     }
 
     /**
@@ -285,6 +285,28 @@ class Chapter extends \Entity\Chapter implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setComments', [$comments]);
 
         return parent::setComments($comments);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getChapNum()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChapNum', []);
+
+        return parent::getChapNum();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setChapNum($chapNum)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChapNum', [$chapNum]);
+
+        return parent::setChapNum($chapNum);
     }
 
 }

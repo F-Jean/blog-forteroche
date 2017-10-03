@@ -21,7 +21,6 @@ class CommentController extends Controller {
     if ($parent != null) {
       $parent = $this->getDoctrine()->getRepository("Entity\Comment")->find($parent);
       $lvl = $parent->getLvl()+1;
-      $parent = $parent->getParent()+1;
     }
     if($request->getMethod()=='POST') {
       $comment = new Comment();

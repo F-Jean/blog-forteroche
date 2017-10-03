@@ -64,10 +64,10 @@ class Comment extends \Entity\Comment implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'Entity\\Comment' . "\0" . 'id', '' . "\0" . 'Entity\\Comment' . "\0" . 'pseudo', '' . "\0" . 'Entity\\Comment' . "\0" . 'content', '' . "\0" . 'Entity\\Comment' . "\0" . 'chapter', '' . "\0" . 'Entity\\Comment' . "\0" . 'parent', '' . "\0" . 'Entity\\Comment' . "\0" . 'lvl', '' . "\0" . 'Entity\\Comment' . "\0" . 'reportCom', '' . "\0" . 'Entity\\Comment' . "\0" . 'addAt'];
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Comment' . "\0" . 'id', '' . "\0" . 'Entity\\Comment' . "\0" . 'pseudo', '' . "\0" . 'Entity\\Comment' . "\0" . 'content', '' . "\0" . 'Entity\\Comment' . "\0" . 'chapter', '' . "\0" . 'Entity\\Comment' . "\0" . 'parent', '' . "\0" . 'Entity\\Comment' . "\0" . 'lvl', '' . "\0" . 'Entity\\Comment' . "\0" . 'reportCom', '' . "\0" . 'Entity\\Comment' . "\0" . 'addAt', '' . "\0" . 'Entity\\Comment' . "\0" . 'children'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'Entity\\Comment' . "\0" . 'id', '' . "\0" . 'Entity\\Comment' . "\0" . 'pseudo', '' . "\0" . 'Entity\\Comment' . "\0" . 'content', '' . "\0" . 'Entity\\Comment' . "\0" . 'chapter', '' . "\0" . 'Entity\\Comment' . "\0" . 'parent', '' . "\0" . 'Entity\\Comment' . "\0" . 'lvl', '' . "\0" . 'Entity\\Comment' . "\0" . 'reportCom', '' . "\0" . 'Entity\\Comment' . "\0" . 'addAt'];
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Comment' . "\0" . 'id', '' . "\0" . 'Entity\\Comment' . "\0" . 'pseudo', '' . "\0" . 'Entity\\Comment' . "\0" . 'content', '' . "\0" . 'Entity\\Comment' . "\0" . 'chapter', '' . "\0" . 'Entity\\Comment' . "\0" . 'parent', '' . "\0" . 'Entity\\Comment' . "\0" . 'lvl', '' . "\0" . 'Entity\\Comment' . "\0" . 'reportCom', '' . "\0" . 'Entity\\Comment' . "\0" . 'addAt', '' . "\0" . 'Entity\\Comment' . "\0" . 'children'];
     }
 
     /**
@@ -351,6 +351,28 @@ class Comment extends \Entity\Comment implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddAt', [$addAt]);
 
         return parent::setAddAt($addAt);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getChildren()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChildren', []);
+
+        return parent::getChildren();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setChildren($children)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChildren', [$children]);
+
+        return parent::setChildren($children);
     }
 
 }
