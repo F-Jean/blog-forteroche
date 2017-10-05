@@ -16,7 +16,7 @@ class AdminController extends Controller
   public function loginAction(Request $request) {
     if($request->getMethod() == "POST") {
       $this->get("session_manager")->set($request->request->all());
-      return $this->redirect("homepage");
+      return $this->redirect("chapter_display");
     }
     return $this->render("admin/login.html.twig");
   }

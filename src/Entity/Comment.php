@@ -36,7 +36,7 @@ class Comment {
   /**
    * @var int
    *
-   * @ManyToOne(targetEntity="Chapter", inversedBy="comments")
+   * @ManyToOne(targetEntity="Chapter", inversedBy="comments", cascade={"remove"})
    * @JoinColumn(name="chapter_id", referencedColumnName="id")
    */
   private $chapter;
@@ -44,7 +44,7 @@ class Comment {
   /**
    * @var int
    *
-   * @ManyToOne(targetEntity="Comment", inversedBy="children")
+   * @ManyToOne(targetEntity="Comment", inversedBy="children", cascade={"remove"})
    * @JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
    */
   private $parent;
