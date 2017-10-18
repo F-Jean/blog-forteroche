@@ -11,11 +11,11 @@
               <input type="text" class="form-control" required name="pseudo"/>
           </div>
           <label>Votre message :</label>
-          <textarea rows="4" cols="50" name="editor2"></textarea>
+          <textarea rows="4" cols="50" name="content"></textarea>
           <button type="submit" class="btn btn-block btn-success">Envoyer</button>
           <!-- CKEditor -->
           <script src="/ressources/basic/ckeditor/ckeditor.js"></script>
-          <script>CKEDITOR.replace('editor2');</script>
+          <script>CKEDITOR.replace('content');</script>
       </form>
   </div>
 {% endblock %}

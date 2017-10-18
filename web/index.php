@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
 require_once __DIR__."/../vendor/autoload.php";
@@ -22,8 +22,10 @@ $loader = new \Symfony\Component\DependencyInjection\Loader\YamlFileLoader($cont
 $loader->load('services.yml');
 
 $response = $container->get("framework")->handle(\Symfony\Component\HttpFoundation\Request::createFromGlobals());
+} catch (NotFoundHttpException $e) {
+  $template = $container->get("templating")->getTwig()->load("default/error.html.twig");
+  $response = new Response($template->render(["message" => "Cette route n'existe pas"]));
 } catch (\Exception $e) {
             $template = $container->get("templating")->getTwig()->load("default/error.html.twig");
             $response = new Response($template->render(["message" => $e->getMessage()]));
-          }
-$response->send();
+          } $response->send();

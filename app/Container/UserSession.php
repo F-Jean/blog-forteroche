@@ -25,10 +25,14 @@ class UserSession
    */
   public function __construct(RequestStack $requestStack)
   {
-    if($requestStack->getCurrentRequest()->getSession() === null) {
-      $requestStack->getCurrentRequest()->setSession(new Session());
+    if($requestStack->getCurrentRequest()!= null) {
+      if($requestStack->getCurrentRequest()->getSession() === null) {
+        $requestStack->getCurrentRequest()->setSession(new Session());
+      }
+      $this->session = $requestStack->getCurrentRequest()->getSession();
+    } else {
+      $this->session = new Session();
     }
-    $this->session = $requestStack->getCurrentRequest()->getSession();
   }
 
   public function set($formData)
