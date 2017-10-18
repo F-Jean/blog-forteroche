@@ -3,8 +3,12 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require_once __DIR__."/../vendor/autoload.php";
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\HttpFoundation\Response;
 
+require_once __DIR__."/../vendor/autoload.php";
+try
+{
 $locator = new \Symfony\Component\Config\FileLocator(array(__DIR__."/../src/Config"));
 $loader = new \Symfony\Component\Routing\Loader\YamlFileLoader($locator);
 $routes = $loader->load('routing.yml');
@@ -18,5 +22,8 @@ $loader = new \Symfony\Component\DependencyInjection\Loader\YamlFileLoader($cont
 $loader->load('services.yml');
 
 $response = $container->get("framework")->handle(\Symfony\Component\HttpFoundation\Request::createFromGlobals());
-
+} catch (\Exception $e) {
+            $template = $container->get("templating")->getTwig()->load("default/error.html.twig");
+            $response = new Response($template->render(["message" => $e->getMessage()]));
+          }
 $response->send();

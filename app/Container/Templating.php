@@ -16,14 +16,17 @@ class Templating
   /**
    * Templating constructor.
    */
-  public function __construct(UserSession $userSession)
+  public function __construct(UserSession $userSession = null)
   {
     $loader = new \Twig_Loader_Filesystem([__DIR__.'/../../src/View']);
     $this->twig = new \Twig_Environment($loader, array(
       'cache' => false,
     ));
-
-    $this->twig->addGlobal("session", $userSession->getAdmin());
+    if ($userSession == null) {
+    $this->twig->addGlobal("session", null);
+    } else {
+      $this->twig->addGlobal("session", $userSession->getAdmin());
+    }
   }
 
   /**

@@ -15,13 +15,16 @@
             </div>
             <div class="form-group">
                 <label>Contenu du chapitre :</label>
-                <textarea class="form-control" required name="content" value="{{ chapter.content }}">{{ chapter.content|raw }}</textarea>
+                <textarea class="form-control" required name="editor1" value="{{ chapter.content }}">{{ chapter.content|raw }}</textarea>
             </div>
             <div class="form-group">
                 <label>Numéro du chapitre :</label>
                 <input type="number" class="form-control" required name="chapNum"/>
             </div>
             <button type="submit" class="btn btn-block btn-success">Valider</button>
+            <!-- CKEditor -->
+            <script src="/ressources/ckeditor/ckeditor.js"></script>
+            <script>CKEDITOR.replace('editor1');</script>
         </form>
     </div>
   </div>

@@ -151,14 +151,14 @@ fieldset[disabled] .btn-xl.active {
   border-color: transparent;
 }
 .navbar-custom .navbar-brand {
-  color: #fed136;
+  color: #944F00;
   font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
 }
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus,
 .navbar-custom .navbar-brand:active,
 .navbar-custom .navbar-brand.active {
-  color: #fec503;
+  color: #CB6C00;
 }
 .navbar-custom .navbar-collapse {
   border-color: rgba(255, 255, 255, 0.02);
@@ -178,13 +178,14 @@ fieldset[disabled] .btn-xl.active {
 .navbar-custom .nav li a {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 1px;
-  color: #f9c81e;
+  color: #944F00;
+  font-size: 16px;
 }
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
-  color: #fed136;
+  color: #CB6C00;
   outline: none;
 }
 .navbar-custom .navbar-nav > .active > a {
@@ -218,7 +219,7 @@ fieldset[disabled] .btn-xl.active {
 }
 @media (min-width: 768px) {
   .navbar-custom.affix {
-    background-color: rgba(34,34,34,0.93);
+    /*background-color: rgba(34,34,34,0.93);*/
     padding: 10px 0;
   }
   .navbar-custom.affix .navbar-brand {
@@ -724,4 +725,15 @@ body {
 .btn .btn-block .btn-success {
   margin-top: 15px;
   margin-bottom: 10px;
+}
+
+strong.page-scroll {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #944F00;
+    outline: none;
+    padding-left: 109px;
+    font-size: 16px;
 }

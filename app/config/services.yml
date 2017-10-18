@@ -24,15 +24,11 @@ services:
     listener.response:
         class:     Symfony\Component\HttpKernel\EventListener\ResponseListener
         arguments: ['UTF-8']
-    listener.exception:
-        class:     Symfony\Component\HttpKernel\EventListener\ExceptionListener
-        arguments: ['Calendar\Controller\ErrorController::exceptionAction']
     dispatcher:
         class:     Symfony\Component\EventDispatcher\EventDispatcher
         calls:
             - [addSubscriber, ['@listener.router']]
             - [addSubscriber, ['@listener.response']]
-            - [addSubscriber, ['@listener.exception']]
     framework:
         class:     Framework\Framework
         arguments: ["@dispatcher", "@controller_resolver", "@request_stack", "@argument_resolver"]
